@@ -1,6 +1,5 @@
 package com.example.demo;
 
-import com.example.demo.model.Player;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
 
@@ -14,7 +13,7 @@ public class CsvUtilFile {
     private CsvUtilFile(){}
 
     public static List<Player> getPlayers(){
-        var uri =  CsvUtilFile.class.getClassLoader().getResource("data.csv");
+        var uri =  CsvUtilFile.class.getClassLoader().getResource("demo_data.csv");
         List<Player> list = new ArrayList<>();
         try (CSVReader reader = new CSVReader(new FileReader(uri.getFile()))) {
             List<String[]> registers = reader.readAll();
@@ -29,7 +28,7 @@ public class CsvUtilFile {
                     strings[7]
             )));
 
-           return list;
+            return list;
 
         } catch (IOException | CsvException e) {
             throw new IllegalArgumentException(e.getMessage());
